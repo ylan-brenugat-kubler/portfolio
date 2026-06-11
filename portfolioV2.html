@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio BUT Réseaux et Télécommunications</title>
+    <meta name="description" content="Portfolio de Ylan Brénugat--Kubler, étudiant en BUT Réseaux et Télécommunications.">
+    <title>Portfolio Ylan B-K | Network & Security</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- RESET & BASICS --- */
         * {
             margin: 0;
             padding: 0;
@@ -12,833 +21,1166 @@
         }
 
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
+            /* Palette Dark Modern */
+            --bg-deep: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7); /* Verre semi-transparent */
+            --primary: #38bdf8; /* Cyan lumineux */
+            --secondary: #818cf8; /* Indigo soft */
+            --accent: #f472b6; /* Rose pour les détails */
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.15);
+            
+            /* Couleurs d'évolution */
+            --s1-color: #67e8f9;
+            --s2-color: #3b82f6;
+            --s3-color: #6366f1;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-attachment: fixed; /* Le fond reste fixe quand on scroll */
+            color: var(--text-main);
+            line-height: 1.7;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar custom */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            background: var(--white);
-            box-shadow: var(--shadow);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Navigation */
+        /* --- NAVIGATION FLOTTANTE --- */
         nav {
-            background: var(--primary-color);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: var(--glass-border);
+            z-index: 1000;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 1100px;
         }
 
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
         }
 
         .logo {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 800;
+            font-size: 1.2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 5px;
         }
 
         .nav-menu a {
-            color: var(--white);
+            color: var(--text-muted);
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: var(--transition);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .nav-menu a:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             color: var(--white);
-            padding: 4rem 2rem;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--white);
-            margin-bottom: 1rem;
-            background: var(--light-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 3rem;
-            color: var(--text-color);
+        .nav-menu a.active-link {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Sections */
+        /* --- SECTIONS & ANIMATIONS --- */
         section {
-            padding: 3rem 2rem;
+            padding-top: 120px; /* Espace pour la nav */
+            padding-bottom: 50px;
             display: none;
+            min-height: 80vh;
         }
 
         section.active {
             display: block;
-            animation: fadeIn 0.5s ease-in;
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .section-title {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
+        /* --- HEADER & PROFIL --- */
+        .profile-wrapper {
             text-align: center;
+            margin-bottom: 3rem;
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            width: 50px;
-            height: 3px;
-            background: var(--secondary-color);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            border: 2px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.2);
+            animation: float 6s ease-in-out infinite;
         }
 
-        /* Cards */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .school-year {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- CARDS (Glassmorphism) --- */
         .card {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 2rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--secondary-color);
-            transition: var(--transition);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px -5px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.2);
         }
 
-        .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
         }
 
+        h3 {
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 i { color: var(--secondary); }
+
+        /* --- GRID & LISTS --- */
         .competences-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
         }
 
         .competence-card {
-            background: var(--light-bg);
+            background: rgba(255,255,255,0.03);
             padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent-color);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
         }
 
-        /* Progress bars */
-        .progress-container {
-            margin: 1rem 0;
+        .competence-card:hover {
+            background: rgba(255,255,255,0.07);
         }
 
+        .competence-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        ul { list-style: none; }
+        li { margin-bottom: 0.8rem; padding-left: 1.2rem; position: relative; }
+        li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* --- PROGRESS BARS --- */
+        .semester-legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            background: rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: var(--glass-border);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .legend-item {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 10px currentColor; }
+        .dot-s1 { background: var(--s1-color); color: var(--s1-color); }
+        .dot-s2 { background: var(--s2-color); color: var(--s2-color); }
+        .dot-s3 { background: var(--s3-color); color: var(--s3-color); }
+
+        .progress-container { margin-bottom: 1.2rem; }
         .progress-label {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #e0e0e0;
-            border-radius: 5px;
+        
+        .progress-bg {
+            background: rgba(255,255,255,0.1);
+            height: 8px;
+            border-radius: 10px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-            border-radius: 5px;
-            transition: width 1s ease;
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+        
+        /* Effet "Glow" sur les barres */
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
         }
 
-        /* SAE Section */
+        .progress-fill.s1 { background: var(--s1-color); box-shadow: 0 0 10px var(--s1-color); }
+        .progress-fill.s2 { background: var(--s2-color); box-shadow: 0 0 10px var(--s2-color); }
+        .progress-fill.s3 { background: var(--s3-color); box-shadow: 0 0 10px var(--s3-color); }
+
+        /* --- ACCORDION SAE --- */
         .sae-container {
-            margin-bottom: 3rem;
+            border: var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.4);
         }
 
         .sae-header {
-            background: var(--secondary-color);
-            color: var(--white);
-            padding: 1rem;
-            border-radius: 10px 10px 0 0;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background 0.3s;
         }
+
+        .sae-header:hover { background: rgba(255,255,255,0.08); }
+        .sae-header h3 { margin: 0; font-size: 1.1rem; color: var(--text-main); }
+        .toggle-icon { transition: transform 0.3s; color: var(--primary); }
+        .toggle-icon.rotated { transform: rotate(180deg); }
 
         .sae-content {
-            background: var(--light-bg);
-            padding: 2rem;
-            border-radius: 0 0 10px 10px;
             display: none;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: rgba(15, 23, 42, 0.3);
+        }
+        
+        .sae-content.active { display: block; animation: slideDown 0.4s ease; }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .sae-content.active {
-            display: block;
+        /* --- CODE VIEWER (TERMINAL STYLE) --- */
+        .code-viewer {
+            background: #1a1b26; /* Tokyo Night bg */
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            border: 1px solid #414868;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            overflow: hidden;
         }
 
-        .toggle-icon {
-            transition: transform 0.3s ease;
+        .code-viewer.active { display: block; animation: fadeInUp 0.4s; }
+
+        .code-header {
+            background: #16161e;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid #414868;
         }
 
-        .toggle-icon.rotated {
-            transform: rotate(180deg);
+        .dot-btn { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #f7768e; }
+        .yellow { background: #e0af68; }
+        .green { background: #9ece6a; }
+
+        .code-content {
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: #a9b1d6;
+            max-height: 500px;
+            overflow-y: auto;
         }
 
-        /* Forms */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 5px;
-            font-family: inherit;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-        }
-
-        /* Buttons */
+        /* --- BUTTONS --- */
         .btn {
-            background: var(--secondary-color);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: #fff;
             padding: 0.8rem 2rem;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 600;
             font-size: 1rem;
-            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
         }
 
         .btn:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary-color);
-            color: var(--secondary-color);
+        .btn-small {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
         }
 
-        .btn-outline:hover {
-            background: var(--secondary-color);
-            color: var(--white);
+        .btn-small:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #0f172a;
         }
 
-        /* Footer */
+        /* --- FOOTER --- */
         footer {
-            background: var(--primary-color);
-            color: var(--white);
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Responsive */
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .nav-menu {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .competences-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 2rem 1rem;
-            }
-        }
-
-        /* Animation classes */
-        .slide-in {
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        .bounce {
-            animation: bounce 0.6s ease;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            h1 { font-size: 2.5rem; }
+            .nav-menu { display: none; } /* Pourrait être remplacé par un burger menu */
+            .card { padding: 1.5rem; }
+            .profile-img { width: 120px; height: 120px; font-size: 3rem; }
+            nav { width: 95%; padding: 0.8rem 1.5rem; }
         }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="nav-container">
-            <div class="logo">Portfolio RT</div>
+            <div class="logo">PORTFOLIO.RT</div>
             <ul class="nav-menu">
                 <li><a href="#" onclick="showSection('accueil')">Accueil</a></li>
                 <li><a href="#" onclick="showSection('profil')">Profil</a></li>
                 <li><a href="#" onclick="showSection('objectifs')">Objectifs</a></li>
                 <li><a href="#" onclick="showSection('competences')">Compétences</a></li>
-                <li><a href="#" onclick="showSection('sae')">SAÉ</a></li>
-                <li><a href="#" onclick="showSection('projection')">Projection</a></li>
+                <li><a href="#" onclick="showSection('sae')">Projets</a></li>
+                <li><a href="#" onclick="showSection('projection')">Bilan</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <!-- Section Accueil -->
+        
         <section id="accueil" class="active">
-            <div class="header">
-                <div class="profile-img">📸</div>
+            <div class="profile-wrapper">
+                <div class="profile-img">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <p class="subtitle">Étudiant BUT Réseaux & Télécoms</p>
                 <h1>Ylan Brénugat--Kubler</h1>
-                <p>Étudiant BUT Réseaux et Télécommunications</p>
-                <p>Année universitaire [2024-2025]</p>
-            </div>
-            
-            <div style="padding: 3rem 2rem; text-align: center;">
-                <h2>Bienvenue sur mon Portfolio</h2>
-                <p style="font-size: 1.1rem; margin: 1rem 0; color: #666;">
-                    Ce portfolio retrace mon parcours et mes apprentissages dans la formation BUT Réseaux et Télécommunications.
-                    Il témoigne de ma progression dans l'acquisition des compétences techniques et professionnelles.
-                </p>
-                <button class="btn" onclick="showSection('profil')">Découvrir mon profil</button>
-            </div>
-        </section>
-
-        <!-- Section Profil -->
-        <section id="profil">
-            <h2 class="section-title">Description Personnelle</h2>
-            
-            <div class="card">
-                <h3>Qui suis-je ?</h3>
-                <p>Je suis étudiant en BUT Réseaux et Télécommunications à l'universiter caen normandie. 
-                Passionné par les technologies de l'information et de la communication, j'ai choisi cette 
-                formation pour développer mes compétences techniques dans l'administration des réseaux, 
-                la sécurité informatique et le développement d'applications.</p>
-            </div>
-
-            <div class="card">
-                <h3>Mon Parcours Scolaire</h3>
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <li style="margin: 0.5rem 0;">🎓 Baccalauréat : technologique(STI2D),Année(2023-2024)</li>
-
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Mes Compétences Personnelles</h3>
-                <div class="competences-grid">
-                    <div>
-                        <h4>Langues</h4>
-                        <ul>
-                            <li>Français : natal</li>
-                            <li>Anglais : B1</li>
-                            <li>espagnol : B1</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4>Informatique</h4>
-                        <ul>
-                            <li>routage/commutation</li>
-                            <li>langage de programmation</li>
-                            <li>certification [PIX,MATLAB,MOOC,CISCO]</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Objectifs -->
-        <section id="objectifs">
-            <h2 class="section-title">Mes Objectifs</h2>
-            
-            <div class="card">
-                <h3>🎯 Objectifs Académiques</h3>
-                <p>Maîtriser les 4 compétences du référentiel BUT RT :</p>
-                <div class="competences-grid">
-                    <div class="competence-card">
-                        <h4>1. Administrer les réseaux et l'Internet</h4>
-                        <p>Développer les compétences en administration système et réseau</p>
-                    </div>
-                    <div class="competence-card">
-                        <h4>2. Connecter les entreprises et les usagers</h4>
-                        <p>Comprendre les enjeux de connectivité et d'infrastructure</p>
-                    </div>
-                    <div class="competence-card">
-                        <h4>3. Créer des outils et applications informatiques</h4>
-                        <p>Développer des solutions logicielles pour les RT</p>
-                    </div>
-                    <div class="competence-card">
-                        <h4>4. Administrer un système d'information sécurisé</h4>
-                        <p>Maîtriser les aspects sécurité (à partir de la 2ème année)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>🚀 Objectifs Professionnels</h3>
-                <ul>
-                    <li>M'orienter vers spécialisation souhaitée : cybersécurité</li>
-                    <li>Acquérir une expérience pratique lors du stage</li>
-                    <li>Développer mon réseau professionnel</li>
-                    <li>Préparer mon insertion professionnelle ou la poursuite d'études</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Section Compétences -->
-        <section id="competences">
-            <h2 class="section-title">Niveau de Compétences</h2>
-            
-            <div class="card">
-                <h3>Compétences BUT RT - Progression</h3>
+                <p class="school-year">Année universitaire <strong>2025-2026</strong></p>
                 
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>Administrer les réseaux et l'Internet</span>
-                        <span>65%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="65"></div>
-                    </div>
+                <div style="margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <p style="color: var(--text-muted);">
+                        Bienvenue sur mon portfolio. Je me spécialise dans l'architecture réseau, l'administration système et la cybersécurité. 
+                        Découvrez mes projets et mon évolution technique.
+                    </p>
+                    <button class="btn" onclick="showSection('profil')">
+                        Explorer mon profil <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
+            </div>
+        </section>
 
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>Connecter les entreprises et les usagers</span>
-                        <span>70%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="70"></div>
-                    </div>
-                </div>
+        <section id="profil">
+            <h2 class="section-title">À Propos</h2>
+            
+            <div class="card">
+                <h3><i class="fas fa-user-astronaut"></i> Qui suis-je ?</h3>
+                <p>Je suis étudiant en BUT Réseaux et Télécommunications à l'<strong>Université Caen Normandie</strong>. 
+                Passionné par les technologies de l'information, j'ai choisi cette formation pour maîtriser l'architecture des réseaux et la cybersécurité. 
+                Actuellement en 2ème année, je m'investis particulièrement dans les projets d'infrastructure système.</p>
+            </div>
 
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>Créer des outils et applications informatiques</span>
-                        <span>60%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="60"></div>
-                    </div>
-                </div>
+            <div class="card">
+                <h3><i class="fas fa-graduation-cap"></i> Parcours</h3>
+                <ul style="list-style: none;">
+                    <li><strong>BUT Réseaux et Télécommunications</strong> (en cours) - Université Caen Normandie</li>
+                    <li><strong>Baccalauréat Technologique (STI2D)</strong> - Acquis avec mention.</li>
+                </ul>
+            </div>
 
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>Administrer un système d'information sécurisé</span>
-                        <span>40%</span>
+            <div class="card">
+                <h3><i class="fas fa-laptop-code"></i> Compétences Clés</h3>
+                <div class="competences-grid">
+                    <div class="competence-card">
+                        <h4><i class="fas fa-globe"></i> Langues</h4>
+                        <ul>
+                            <li>Français : Natif</li>
+                            <li>Anglais : <strong>B1+</strong> (Technique)</li>
+                            <li>Espagnol : B1</li>
+                        </ul>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="40"></div>
+                    <div class="competence-card">
+                        <h4><i class="fas fa-terminal"></i> Tech Stack</h4>
+                        <ul>
+                            <li><strong>Réseau :</strong> Cisco, OSPF, VLAN, Bind9, ISC-DHCP</li>
+                            <li><strong>Dev :</strong> Python (API, JSON), Bash, HTML/CSS</li>
+                            <li><strong>SysAdmin :</strong> Linux (Debian), Proxmox, Virtualisation</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section SAÉ -->
+        <section id="objectifs">
+            <h2 class="section-title">Objectifs</h2>
+            
+            <div class="card">
+                <h3><i class="fas fa-bullseye"></i> Académiques</h3>
+                <div class="competences-grid">
+                    <div class="competence-card">
+                        <h4>1. Admin Réseaux</h4>
+                        <p class="text-small">Expertise en déploiement de services critiques (DNS, DHCP) et administration système Linux.</p>
+                    </div>
+                    <div class="competence-card">
+                        <h4>2. Connexion</h4>
+                        <p class="text-small">Maîtrise des infrastructures multi-sites, de la fibre optique et du routage dynamique.</p>
+                    </div>
+                    <div class="competence-card">
+                        <h4>3. Développement</h4>
+                        <p class="text-small">Automatisation des tâches d'administration via Python et l'interaction avec des API.</p>
+                    </div>
+                    <div class="competence-card">
+                        <h4>4. Sécurité</h4>
+                        <p class="text-small">Sécurisation des architectures (Firewall, VLAN, Droits d'accès) et veille cybersécurité.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-briefcase"></i> Professionnels</h3>
+                <ul>
+                    <li>Spécialisation future en <strong>Cybersécurité</strong>.</li>
+                    <li><strong>Stage de 2ème année</strong> : Recherche active dans le domaine de l'administration système et réseau.</li>
+                    <li>Poursuite d'études en <strong>École d'Ingénieurs</strong> ou Master spécialisé.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="competences">
+            <h2 class="section-title">Évolution Technique (S1 à S3)</h2>
+            
+            <div class="card">
+                <div class="semester-legend">
+                    <div class="legend-item"><span class="dot dot-s1"></span> S1 : Découverte</div>
+                    <div class="legend-item"><span class="dot dot-s2"></span> S2 : Approfondissement</div>
+                    <div class="legend-item"><span class="dot dot-s3"></span> S3 : Maîtrise / Projet</div>
+                </div>
+
+                <div class="competence-group" style="margin-bottom: 3rem;">
+                    <h3><i class="fas fa-network-wired"></i> Administrer les réseaux</h3>
+                    
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S1 : Bases (Adressage IP, Commutation)</span><span>60%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s1" data-width="60"></div></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S2 : Routage statique, Services</span><span>75%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s2" data-width="75"></div></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S3 : OSPF, DNS/DHCP Avancé (Projet PolyLED)</span><span>85%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s3" data-width="85"></div></div>
+                    </div>
+                </div>
+
+                <div class="competence-group" style="margin-bottom: 3rem;">
+                    <h3><i class="fas fa-project-diagram"></i> Connecter l'entreprise</h3>
+                    
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S1 : Câblage et supports</span><span>65%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s1" data-width="65"></div></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S2 : WAN, Fibre Optique</span><span>75%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s2" data-width="75"></div></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S3 : Boucle locale, Transmission (PolyLED)</span><span>90%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s3" data-width="90"></div></div>
+                    </div>
+                </div>
+
+                <div class="competence-group" style="margin-bottom: 3rem;">
+                    <h3><i class="fas fa-code"></i> Développement & Outils</h3>
+                    
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S1 : HTML/CSS, Algo</span><span>50%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s1" data-width="50"></div></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S2 : Web dynamique, Bash</span><span>65%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s2" data-width="65"></div></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S3 : Python API (Projet Pokémon), Virtualisation</span><span>80%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s3" data-width="80"></div></div>
+                    </div>
+                </div>
+
+                <div class="competence-group">
+                    <h3><i class="fas fa-shield-alt"></i> Sécurité SI</h3>
+                    
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S1 : Linux, Droits fichiers</span><span>40%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s1" data-width="40"></div></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S2 : SSH, HTTPS</span><span>55%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s2" data-width="55"></div></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>S3 : Segmentation VLAN, Firewalling</span><span>70%</span></div>
+                        <div class="progress-bg"><div class="progress-fill s3" data-width="70"></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section id="sae">
-            <h2 class="section-title">Apprentissages SAÉ</h2>
+            <h2 class="section-title">Projets & Réalisations (SAÉ)</h2>
             
             <div class="sae-container">
                 <div class="sae-header" onclick="toggleSAE('sae1')">
-                    <h3>S'initier aux réseaux informatiques</h3>
-                    <span class="toggle-icon">▼</span>
+                    <h3>SAÉ12 : Infrastructure Réseau (Switch L2/L3)</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="sae-content" id="sae1">
-                    <p><strong>Compétence(s) visée(s) :</strong> Construire une infrastructure réseau</p>
+                    <p><strong>Compétence(s) :</strong> Construire une infrastructure réseau</p>
                     
-                    <h4>Contexte et objectifs</h4>
-                    <p><p> La SAE12 « S’initier aux réseaux informatiques » a pour objectif de nous immerger dans un projet concret de mise en place d’une infrastructure réseau. Le scénario repose sur l’entreprise fictive Fibre&Company, 
-                        une PME en pleine expansion qui doit améliorer son réseau pour répondre à ses nouveaux besoins. L’objectif pédagogique est de nous initier aux notions de VLAN, routage inter-VLAN, agrégation de liens, services réseaux de base (DHCP, DNS, partage de fichiers, etc.), ainsi qu’aux principes de sécurité sur les équipements réseau. </p></p>
+                    <h4><i class="fas fa-info-circle"></i> Contexte et objectifs</h4>
+                    <p>La SAE12 « S’initier aux réseaux informatiques » a pour objectif de nous immerger dans un projet concret de mise en place d’une infrastructure réseau. Le scénario repose sur l’entreprise fictive Fibre&Company. L’objectif pédagogique est de nous initier aux notions de VLAN, routage inter-VLAN, agrégation de liens, services réseaux de base (DHCP, DNS), ainsi qu’aux principes de sécurité.</p>
                     
-                    <h4>Mon rôle et mes contributions</h4>
-                    <p><p> Dans le cadre de ce projet, j’étais chargé de la configuration des switchs de niveau 2 (L2). J’ai notamment : <ul> <li>Créé et configuré les VLANs selon l’organigramme de l’entreprise</li> 
-                        <li>Réparti les ports utilisateurs dans les VLANs correspondants</li> <li>Ajouté des descriptions sur les ports et VLANs pour une meilleure lisibilité</li> <li>Mise en place du protocole RSTP pour la redondance réseau</li> <li>Assuré une interconnexion correcte des équipements via agrégation de liens</li> </ul></p>
-                    
-                    <h4>Traces et livrables</h4>
-                    <ul>
-                         <a href="compte1.pdf" class="image-link" onclick="openModal('')">Compte rendu service </a>
+                    <h4><i class="fas fa-user-check"></i> Mon rôle</h4>
+                    <p>Dans le cadre de ce projet, j’étais chargé de la configuration des switchs de niveau 2 (L2) :
+                        <ul> 
+                            <li>Création et configuration des VLANs selon l’organigramme.</li> 
+                            <li>Répartition des ports utilisateurs.</li> 
+                            <li>Ajout de descriptions pour la lisibilité.</li> 
+                            <li>Mise en place du protocole RSTP (Redondance).</li> 
+                            <li>Interconnexion via agrégation de liens (LACP).</li> 
                         </ul>
-                         <a href="compte2.pdf" class="image-link" onclick="openModal('')">compte rendu switch </a>
-                   
+                    </p>
                     
-                    <h4>Auto-évaluation</h4>
-                    <p><strong>Points forts :</strong> <p><strong></strong> J’ai bien maîtrisé la configuration des switchs L2, notamment la création des VLANs, l’assignation des ports, et la mise en œuvre du RSTP. J’ai aussi su configurer les interfaces de manière claire et documentée.</p> <p><strong></p>
-                    <p><strong>Points d'amélioration :</strong><p></p></strong> La gestion du temps a été plus difficile, notamment dans la planification des tâches et dans l’estimation de la durée nécessaire pour certaines configurations. Pour les prochaines SAE, je m’efforcerai de mieux structurer mon travail et de garder une marge de temps pour les imprévus.</p></p>
+                    <h4><i class="fas fa-file-export"></i> Livrables</h4>
+                    <ul>
+                        <li>Fichiers de configuration Cisco.</li>
+                        <li>Rapport technique et schémas.</li>
+                    </ul>
+                    
+                    <h4><i class="fas fa-star"></i> Auto-évaluation</h4>
+                    <p>Maîtrise de la configuration des switchs L2. Amélioration nécessaire sur la gestion du temps.</p>
                 </div>
             </div>
 
             <div class="sae-container">
                 <div class="sae-header" onclick="toggleSAE('sae2')">
-                    <h3>Site Web</h3>
-                    <span class="toggle-icon">▼</span>
+                    <h3>SAÉ14 : Présence Web (Elden Ring)</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="sae-content" id="sae2">
-                    <p><strong>Compétence(s) visée(s) :</strong> Creation site internet</p>
+                    <p><strong>Compétence(s) :</strong> Création site internet</p>
                     
-                    <h4>Contexte et objectifs</h4>
-                    <p><p> <p> Ce projet s’inscrit dans le cadre d’une SAE visant à développer un site web statique respectant les normes du Web (W3C, WCAG 2.0 AA), tout en appliquant les bases du design responsive, l’intégration d’animations CSS, l’utilisation de Flexbox et/ou Grid, ainsi que l’hébergement sur GitHub Pages. Le but est de nous initier à la conception web front-end moderne, tout en valorisant un sujet personnel. J’ai choisi de créer un site autour du jeu vidéo <strong>Elden Ring</strong>, afin de combiner technique et passion. </p>
+                    <h4><i class="fas fa-info-circle"></i> Contexte et objectifs</h4>
+                    <p>Développement d'un site web statique respectant les normes W3C, responsive, avec animations CSS et Flexbox/Grid, hébergé sur GitHub Pages. Sujet : <strong>Elden Ring</strong>.</p>
                     
-                    <h4>Mon rôle et mes contributions</h4>
-                    <p> J’ai réalisé l’intégralité du site web, de la conception à la mise en ligne. Cela inclut : <ul> <li>Le design et le développement de trois pages principales : accueil, contenu (sur l’histoire du jeu), et à propos</li> <li>La mise en place d’une charte graphique cohérente sur toutes les pages</li> <li>L’utilisation de Flexbox et CSS Grid pour structurer les contenus</li> <li>La création d’animations CSS (effets au survol, transitions, etc.)</li> <li>L’adaptation responsive du site pour qu’il soit lisible sur ordinateurs, tablettes et smartphones</li> <li>Le dépôt du projet sur GitHub, avec hébergement via GitHub Pages</li> <li>La rédaction d’un README.md détaillé avec présentation, technologies utilisées, et lien vers le site</li> </ul> </p>
+                    <h4><i class="fas fa-user-check"></i> Mon rôle</h4>
+                    <p>J’ai réalisé l’intégralité du site :
+                        <ul> 
+                            <li>Design et développement de 3 pages.</li> 
+                            <li>Charte graphique et animations CSS.</li> 
+                            <li>Responsive design (Mobile/Desktop).</li> 
+                            <li>Déploiement sur GitHub Pages.</li> 
+                        </ul> 
+                    </p>
                     
-                    <h4>Traces et livrables</h4>
+                    <h4><i class="fas fa-file-export"></i> Livrables</h4>
                     <ul>
-                         <a href="compte1.pdf" class="image-link" onclick="openModal('')">Compte rendu service </a>
-                        </ul>
-                        
+                        <li>Code source HTML/CSS/JS.</li>
+                        <li>Site en ligne.</li>
+                    </ul>
                     
-                    <h4>Auto-évaluation</h4>
-                    <p><strong>Points forts :</strong> J’ai réussi à répondre à toutes les exigences techniques du cahier des charges : site responsive, animations CSS, bonne structuration en Flexbox/Grid, hébergement sur GitHub Pages, et validation W3C. J’ai également réussi à rendre le site visuellement attractif tout en étant fonctionnel.</p>
-                    <p><strong>Points d'amélioration :</strong> J’aurais pu améliorer la clarté et la lisibilité de mon code (meilleure indentation, commentaires, nommage plus rigoureux), afin de le rendre plus maintenable et compréhensible, notamment pour un éventuel relecteur ou collaborateur.</p>
+                    <h4><i class="fas fa-star"></i> Auto-évaluation</h4>
+                    <p>Site fonctionnel et esthétique. Le code pourrait être mieux commenté.</p>
                 </div>
             </div>
 
             <div class="sae-container">
                 <div class="sae-header" onclick="toggleSAE('sae3')">
-                    <h3>API Pokemon</h3>
-                    <span class="toggle-icon">▼</span>
+                    <h3>SAÉ15 : Python & API (Projet Pokémon)</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="sae-content" id="sae3">
-                    <p><strong>Compétence(s) visée(s) :</strong> Développer des compétences en traitement de données</p>
+                    <p><strong>Compétence(s) :</strong> Développement d'outils</p>
                     
-                    <h4>Contexte et objectifs</h4>
-                    <p><p> <p> Projet universitaire en binôme utilisant l'API Pokémon pour créer deux outils : pokefiche (fiches individuelles de Pokémon) et pokestats (statistiques comparatives). L'objectif est de maîtriser les requêtes API, la conversion de formats et la présentation de données de manière automatisée. </p>
+                    <h4><i class="fas fa-info-circle"></i> Contexte et objectifs</h4>
+                    <p>Conception d'un programme <strong>Python</strong> interagissant avec l'API <strong>PokeAPI</strong> pour récupérer des données JSON, les traiter et générer une fiche HTML formatée.</p>
                     
-                    <h4>Mon rôle et mes contributions</h4>
-                    <p> Développer 3 modules Python avec fonctions de téléchargement de données, conversion Markdown→HTML, génération de fiches structurées et calcul de statistiques personnalisées. Créer des scripts utilisables en ligne de commande et des fonctions importables pour automatiser le processus complet.</li> </ul> </p>
+                    <h4><i class="fas fa-user-check"></i> Mon rôle</h4>
+                    <p>Développement du script <code>pokefiche.py</code> :
+                        <ul> 
+                            <li>Connexion API REST avec <code>requests</code>.</li> 
+                            <li>Parsing JSON en dictionnaire Python.</li> 
+                            <li>Génération automatique Markdown -> HTML.</li> 
+                            <li>Gestion arguments ligne de commande.</li>
+                        </ul> 
+                    </p>
+
+                    <h4><i class="fas fa-file-code"></i> Livrables (Code Source)</h4>
+                    <p>Le script permet de choisir un Pokémon par ID.</p>
                     
-                    <h4>Traces et livrables</h4>
-                    <ul>
-                        <li>[Livrable 1 : description]</li>
-                        <li>[Livrable 2 : description]</li>
-                    </ul>
-                    
-                    <h4>Auto-évaluation</h4>
-                    <p><strong>Points forts :</strong> Maîtrise des APIs REST et manipulation JSON, automatisation complète du processus de génération de contenu, capacité d'analyse statistique et documentation technique claire.</p>
-                    <p><strong>Points d'amélioration :</strong> Gestion d'erreurs API plus robuste, implémentation du système de cache pour optimiser les performances, amélioration du design HTML et validation systématique des formats générés.</p>
+                    <button class="btn-small" onclick="toggleCode('code-pokemon')">
+                        <i class="fas fa-code"></i> Voir le code (pokefiche.py)
+                    </button>
+
+                    <div id="code-pokemon" class="code-viewer">
+                        <div class="code-header">
+                            <span class="dot-btn red"></span>
+                            <span class="dot-btn yellow"></span>
+                            <span class="dot-btn green"></span>
+                            <span style="margin-left: 10px; font-size: 0.8rem;">pokefiche.py</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import requests
+import markdown
+import sys
+
+# Traduction des noms des statistiques
+STATS_TRADUCTION = {
+    "hp": "PV",
+    "attack": "Attaque",
+    "defense": "Défense",
+    "special-attack": "Attaque spéciale",
+    "special-defense": "Défense spéciale",
+    "speed": "Vitesse"
+}
+
+def download_poke(id: int) -> dict:
+    """Télécharge les données d'un Pokémon via l'API REST."""
+    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    raise ValueError(f"Erreur : Pokémon '{id}' introuvable.")
+
+def get_stats_for_pokemon(pokemon_name: str) -> dict:
+    """Récupère les statistiques de base d'un Pokémon."""
+    url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_name}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        stats = {stat['stat']['name']: stat['base_stat'] for stat in data['stats']}
+        return stats, data['sprites']['front_default']
+    raise ValueError(f"Erreur : Pokémon '{pokemon_name}' introuvable.")
+
+def poke_to_md(data: dict, filename: str) -> None:
+    """Génère un fichier Markdown structuré."""
+    name = data['name'].capitalize()
+    height = data['height'] / 10
+    weight = data['weight'] / 10
+    types = ", ".join([t['type']['name'].capitalize() for t in data['types']])
+    sprite_url = data['sprites']['front_default']
+
+    markdown_content = f"""# Fiche Pokémon : {name}
+
+![Image de {name}]({{sprite_url}})
+
+- **Taille** : {height} m
+- **Poids** : {weight} kg
+- **Types** : {types}
+
+"""
+    stats, _ = get_stats_for_pokemon(name)
+    markdown_content += "## Statistiques\n\n"
+    for stat, value in stats.items():
+        stat_name = STATS_TRADUCTION.get(stat, stat).capitalize()
+        markdown_content += f"- **{{stat_name}}** : {{value}}\n"
+
+    with open(filename, "w", encoding="utf-8") as file:
+        file.write(markdown_content)
+
+def convert(md_file: str, html_file: str) -> None:
+    """Convertit un fichier Markdown en fichier HTML."""
+    try:
+        with open(md_file, 'r', encoding='utf-8') as md:
+            html_content = markdown.markdown(md.read())
+        with open(html_file, 'w', encoding='utf-8') as html:
+            html.write(html_content)
+    except Exception as e:
+        print(f"Erreur : {e}")
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        pokemon_id = int(sys.argv[1])
+        # Appel logique principale
+    else:
+        print("Usage : python3 pokefiche.py <id>")
+</code></pre>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top:20px;"><i class="fas fa-star"></i> Auto-évaluation</h4>
+                    <p>Chaîne de traitement (API -> JSON -> HTML) automatisée avec succès.</p>
                 </div>
             </div>
-        
-         
-        <div class="sae-container">
+
+            <div class="sae-container">
                 <div class="sae-header" onclick="toggleSAE('sae4')">
-                    <h3> TELEPHONIE MOBILE </h3>
-                    <span class="toggle-icon">▼</span>
+                    <h3>SAÉ 3.01 : Projet PolyLED (Services Réseau)</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="sae-content" id="sae4">
-                    <p><strong>Compétence(s) visée(s) :</strong> Développer des compétences en analyse spectrale</p>
+                    <p><strong>Compétence(s) :</strong> Administrer les réseaux (Niveau 2)</p>
                     
-                    <h4>Contexte et objectifs</h4>
-                    <p><p> <p> Projet de binôme visant à caractériser le spectre de la téléphonie mobile (2G/3G/4G) sur le campus IUT de Caen Sud. Utilisation du RTL-SDR avec Matlab pour identifier et mesurer les émetteurs d'opérateurs mobiles dans un rayon de 2 km autour de l'IUT. Limitation technique du RTL-SDR à 1700 MHz maximum. </p>
                     
-                    <h4>Mon rôle et mes contributions</h4>
-                    <p> Analyser la cartographie des émetteurs via cartoradio.fr, configurer et calibrer le RTL-SDR (calcul gain, longueur antenne optimale), effectuer des mesures spectrales ciblées sur un opérateur choisi (Orange/SFR/Bouygues/Free). Identifier spatialement et fréquentiellement l'émetteur correspondant avec validation par mesures OBW et tests de téléchargement.</li> </ul> </p>
+                    <h4><i class="fas fa-info-circle"></i> Contexte et objectifs</h4>
+                    <p>Projet <strong>PolyLED / Krypcom</strong> : déploiement des services critiques sur le site de Caen (DHCP, DNS) pour supporter 150 postes et les VLANs.</p>
                     
-                    <h4>Traces et livrables</h4>
-                    <ul>
-                        <li>[Livrable 1 : description]</li>
-                        <li>[Livrable 2 : description]</li>
-                    </ul>
+                    <h4><i class="fas fa-user-check"></i> Mon rôle</h4>
+                    <p>Responsable infrastructure adressage et nommage :
+                        <ul>
+                             <li>Installation et conf. <strong>DHCP</strong> (isc-dhcp-server) pour VLAN RH, Admin, Prod.</li>
+                             <li>Déploiement serveur <strong>DNS</strong> (bind9) pour domaine <code>polyled.lan</code>.</li>
+                             <li>Configuration zones directes/inverses et forwarders.</li>
+                             <li>Synchronisation <strong>NTP</strong> (Chrony).</li>
+                        </ul>
+                    </p>
+
+                    <h4><i class="fas fa-file-code"></i> Livrables (Extraits PTI)</h4>
+                    <p>Configurations techniques validées :</p>
                     
-                    <h4>Auto-évaluation</h4>
-                    <p><strong>Points forts :</strong> Maîtrise des outils de mesure RF et Matlab, compréhension des systèmes de télécommunications mobiles, capacité d'analyse spectrale précise et méthodologie rigoureuse d'identification des émetteurs.</p>
-                    <p><strong>Points d'amélioration :</strong> Optimisation des réglages RTL-SDR pour améliorer la précision des mesures, approfondissement de l'analyse des caractéristiques spectrales (OBW, modulations) et amélioration de la présentation cartographique des résultats.</p>
+                    <button class="btn-small" onclick="toggleCode('code-pti')">
+                        <i class="fas fa-file-contract"></i> Voir les Configurations (PTI)
+                    </button>
+
+                    <div id="code-pti" class="code-viewer">
+                        <div class="code-header">
+                            <span class="dot-btn red"></span>
+                            <span class="dot-btn yellow"></span>
+                            <span class="dot-btn green"></span>
+                            <span style="margin-left: 10px; font-size: 0.8rem;">pti_config.conf</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># --- EXTRAIT PTI DNS (Bind9) ---
+# Fichier : /etc/bind/named.conf.options
+options {
+    directory "/var/cache/bind";
+    
+    # Redirection vers les DNS Google pour l'accès Internet
+    forwarders {
+        8.8.8.8;
+        8.8.4.4;
+    };
+    
+    recursion yes;
+    dnssec-validation no;
+};
+
+# Fichier : /etc/bind/named.conf.local
+# Zone interne PolyLED
+zone "polyled.local" {
+    type master;
+    file "/var/cache/bind/db.polyled.local";
+};
+
+# --- EXTRAIT PTI DHCP (ISC-DHCP-Server) ---
+# Fichier : /etc/dhcp/dhcpd.conf
+default-lease-time 600;
+max-lease-time 7200;
+authoritative;
+
+# VLAN RH
+subnet 10.0.1.0 netmask 255.255.255.0 {
+    range 10.0.1.100 10.0.1.200;
+    option routers 10.0.1.254;
+}
+
+# VLAN Production
+subnet 10.0.3.0 netmask 255.255.255.0 {
+    range 10.0.3.50 10.0.3.250;
+    option routers 10.0.3.254;
+}
+</code></pre>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top:20px;"><i class="fas fa-star"></i> Auto-évaluation</h4>
+                    <p>Interconnexion DHCP/VLANs fonctionnelle. Résolution DNS interne/externe opérationnelle.</p>
                 </div>
             </div>
-           
 
-           <div class="sae-container">
+            <div class="sae-container">
                 <div class="sae-header" onclick="toggleSAE('sae5')">
-                    <h3> MESURES SUR LA BANDE ISM </h3>
-                    <span class="toggle-icon">▼</span>
+                    <h3>SAÉ3Cyber03 : Réseau informatique sécurisé multi-sites</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="sae-content" id="sae5">
-                    <p><strong>Compétence(s) visée(s) :</strong> Développer des compétences en exploration du spectre radiofréquence</p>
+                    <p><strong>Compétence(s) :</strong> Cybersécurité et infrastructure multi-sites</p>
                     
-                    <h4>Contexte et objectifs</h4>
-                    <p><p> <p> Projet de 4h suivi d'un QCM d'évaluation visant à identifier et caractériser un signal perturbateur dans une bande ISM (f < 1 GHz) simulant une télécommande de portail. Utilisation de l'ADALM-PLUTO avec Matlab pour effectuer des mesures spectrales professionnelles et présenter les résultats aux autorités compétentes. </p>
+                    <h4><i class="fas fa-info-circle"></i> Contexte et objectifs</h4>
+                    <p>Le projet consistait à répondre au cahier des charges de la société en expansion Pellet-SA (énergies renouvelables) nécessitant une infrastructure redondante, scalable et sécurisée. Le déploiement s'est déroulé en 3 phases progressives : la mise en place initiale de l'infrastructure (Phase 1), l'exploitation des vulnérabilités via des tests de pénétration (Phase 2), et enfin la remédiation et mise en œuvre des correctifs de sécurité (Phase 3).</p>
                     
-                    <h4>Mon rôle et mes contributions</h4>
-                    <p> Configurer l'ADALM-PLUTO (gain, fréquence d'échantillonnage, paramètres antenne), explorer le spectre ISM pour localiser le signal perturbateur, effectuer des mesures précises (OBW, Channel Power, DSP). Analyser les caractéristiques spectrales en différents modes (RMS, Power, Power Density) et appliquer les conversions théoriques entre ces grandeurs.</li> </ul> </p>
+                    <h4><i class="fas fa-user-check"></i> Mon rôle</h4>
+                    <p>J'ai été impliqué sur de multiples aspects du déploiement :
+                        <ul>
+                            <li>Configuration d'équipements Cisco (commutateurs L2/L3 en stack) avec mise en œuvre de la redondance via un standard d'agrégation de liens et HSRP/VRRP en mode actif/passif.</li>
+                            <li>Création de sous-réseaux et VLANs spécifiques selon l'organigramme (Services, Comptabilité, Terrain, Logistique, Administration) avec optimisation MSTP sur deux instances.</li>
+                            <li>Déploiement sous hyperviseur Proxmox de deux machines virtuelles : une Debian fournissant les services DNS cache (Bind9) et TFTP, et une Windows Server 2019 Core hébergeant un annuaire ADDS (GX-Pellet.com.test) et un partage de fichiers SMB via la méthode ADGLP.</li>
+                            <li>Sécurisation des accès aux équipements réseau par SSH.</li>
+                        </ul>
+                    </p>
+
+                    <h4><i class="fas fa-file-code"></i> Livrables (Extraits de Configuration)</h4>
+                    <p>En plus d'un tableau de synthèse présentant le plan IP, les règles d'accès, et la documentation des tests effectués, voici un extrait de configuration d'équipement réseau.</p>
                     
-                    <h4>Traces et livrables</h4>
-                    <ul>
-                        <li>[Livrable 1 : description]</li>
-                        <li>[Livrable 2 : description]</li>
-                    </ul>
+                    <button class="btn-small" onclick="toggleCode('code-cyber03')">
+                        <i class="fas fa-file-contract"></i> Voir les Configurations (Extrait Switch Cisco)
+                    </button>
+
+                    <div id="code-cyber03" class="code-viewer">
+                        <div class="code-header">
+                            <span class="dot-btn red"></span>
+                            <span class="dot-btn yellow"></span>
+                            <span class="dot-btn green"></span>
+                            <span style="margin-left: 10px; font-size: 0.8rem;">switch_infra_config.conf</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># --- EXTRAIT DE CONFIGURATION MSTP ---
+# Optimisation de la configuration pour avoir deux instances et une utilisation de tous les liens
+spanning-tree mode mst
+spanning-tree mst configuration
+ name PELLET_SA
+ revision 1
+ instance 1 vlan 600, 650, 700
+ instance 2 vlan 120, 130, 140, 150, 160
+exit
+
+# --- EXTRAIT REDONDANCE HSRP (VLAN 120 - Comptabilité) ---
+# Utilisation d'un protocole FHRP de type actif/passif pour la résilience de la passerelle
+interface Vlan120
+ description Vlan Comptabilite - Pellet-SA
+ ip address 10.0.120.252 255.255.255.0
+ standby 120 ip 10.0.120.254
+ standby 120 priority 110
+ standby 120 preempt
+ 
+# --- SECURISATION ACCES ---
+# Accès SSH fourni vers tous les équipements réseau
+line vty 0 4
+ transport input ssh
+ login local
+</code></pre>
+                        </div>
+                    </div>
                     
-                    <h4>Auto-évaluation</h4>
-                    <p><strong>Points forts :</strong>Maîtrise des outils SDR et Matlab/Simulink, compréhension approfondie des mesures spectrales (RBW, OBW, SNR), capacité d'analyse des signaux RF et application pratique des connaissances théoriques en télécommunications.</p>
-                    <p><strong>Points d'amélioration :</strong> Optimisation des réglages ADALM-PLUTO pour améliorer la précision des mesures, approfondissement de la compréhension de la réglementation ISM et amélioration de la rapidité d'identification des signaux perturbateurs dans le spectre.</p>
+                    <h4 style="margin-top:20px;"><i class="fas fa-star"></i> Auto-évaluation</h4>
+                    <p>Déploiement d'une architecture résiliente très complète et fonctionnelle avec l'utilisation conjointe de technologies de virtualisation et de redondance matérielle.</p>
                 </div>
             </div>
-           </section>
 
-        <!-- Section Projection -->
+            <div class="sae-container">
+                <div class="sae-header" onclick="toggleSAE('sae6')">
+                    <h3>SAÉ22 : Mesurer et caractériser un signal (Chasse au spectre)</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="sae-content" id="sae6">
+                    <p><strong>Compétence(s) :</strong> Mesurer et caractériser un signal ou un système de télécommunication</p>
+                    
+                    <h4><i class="fas fa-info-circle"></i> Contexte et objectifs</h4>
+                    <p>Ce projet en binôme/trinôme consistait à réaliser une "chasse au spectre" de la téléphonie mobile sur le Campus 3 (Caen Sud). L'objectif était de relever le spectre RF (2G, 3G, 4G, 5G) à l'aide d'un récepteur <strong>RTL-SDR</strong> et de <strong>Matlab</strong>, en ciblant les émetteurs répertoriés sur <em>cartoradio.fr</em>.</p>
+                    
+                    <h4><i class="fas fa-user-check"></i> Mon rôle</h4>
+                    <p>Dans le cadre de cette étude, nous nous sommes concentrés sur l'opérateur <strong>Orange</strong> :
+                        <ul>
+                            <li>Localisation de l'émetteur (17 Rue de Navarre, Cormelles-le-Royal).</li>
+                            <li>Calcul théorique de la longueur optimale d'une antenne dipôle (15 cm pour 1 GHz).</li>
+                            <li>Adaptation du script Matlab pour compenser le gain du RTL-SDR (retrait manuel des 40 dB).</li>
+                            <li>Mesures de la bande de fréquences (400 MHz - 1700 MHz), identification de l'OBW (Occupied Bandwidth) du canal downstream (~10 MHz centré sur 813 MHz) et vérification du signal uplink (pic à 724 MHz en 5G).</li>
+                        </ul>
+                    </p>
+
+                    <h4><i class="fas fa-file-export"></i> Livrables (Rapport de mesures)</h4>
+                    <p>Note de synthèse et extraits des mesures spectrales sous Matlab :</p>
+                    
+                    <button class="btn-small" onclick="toggleCode('code-sae22')">
+                        <i class="fas fa-file-contract"></i> Voir le Compte-rendu (Extrait)
+                    </button>
+
+                    <div id="code-sae22" class="code-viewer">
+                        <div class="code-header">
+                            <span class="dot-btn red"></span>
+                            <span class="dot-btn yellow"></span>
+                            <span class="dot-btn green"></span>
+                            <span style="margin-left: 10px; font-size: 0.8rem;">projet_telecom.md</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Identification de l'émetteur cible
+Opérateur : ORANGE (Catégorie: Téléphonie)
+Adresse : 17 R DE NAVARRE, 14123 CORMELLES LE ROYAL
+
+# Script Matlab corrigé
+y_data_dbm = 10 * log10((fft_masterreshape.^2)/50*1000) - rtlsdr_gain;
+// Explication : Le retrait du gain (40 dB ajouté par le RTL-SDR) permet d'avoir la puissance réelle reçue par l'antenne.
+
+# Calcul de la longueur optimale de l'antenne
+Fréquence : f = 1 GHz = 1x10^9 Hz
+Vitesse de la lumière : c = 3x10^8 m/s
+Longueur d'onde : λ = c/f = 0.3 m = 30 cm
+Longueur optimale d'une antenne dipôle : λ/2 = 15 cm
+
+# Résultats d'analyse spectrale (RTL-SDR + Matlab)
+- Plage globale : Sweep de 400 MHz à 1700 MHz.
+- Zoom sur la bande d'Orange (811-821 MHz) :
+  L'OBW (Occupied Bandwidth) à 99% de la puissance totale mesurée est d'environ 10 MHz, centrée autour de 813 MHz.
+- Vérification de l'Uplink (émission du téléphone vers la station) : 
+  La bande d'uplink de cet opérateur se situe entre 703 et 748 MHz. Un pic très marqué a été observé à 724 MHz en mode 5G, validant ainsi la détection de l'émission locale vers le réseau.
+</code></pre>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top:20px;"><i class="fas fa-star"></i> Auto-évaluation</h4>
+                    <p>Bonne compréhension de la chaîne d'acquisition RF. Réussite de la corrélation entre les données théoriques publiques de l'ANFR (Cartoradio) et les signaux radios réels mesurés sur le terrain.</p>
+                </div>
+            </div>
+
+        </section>
+
         <section id="projection">
-            <h2 class="section-title">Projection et Évaluation Globale</h2>
+            <h2 class="section-title">Bilan & Avenir</h2>
             
             <div class="card">
-                <h3>📈 Bilan de mes progrès</h3>
-                <p><strong>Évolution personnelle :</strong></p>
-                <p>[Réflexion sur votre évolution depuis le début de la formation, prise de conscience, changements d'approche]</p>
-                
-                <h4>Difficultés surmontées</h4>
-                <p>[Analyse des principales difficultés rencontrées et comment vous les avez dépassées]</p>
+                <h3><i class="fas fa-chart-line"></i> Progression</h3>
+                <p>Depuis le début du BUT RT, j'ai acquis une <strong>méthode de travail rigoureuse</strong> : Conception, Réalisation, Vérification. L'appréhension du subnetting et des modèles OSI a été surmontée par la pratique intensive. La documentation technique en anglais est devenue une habitude.</p>
             </div>
-
+            
             <div class="card">
-                <h3>🎯 Points d'amélioration identifiés</h3>
+                <h3><i class="fas fa-rocket"></i> Perspectives</h3>
                 <ul>
-                    <li>[Point d'amélioration 1]</li>
-                    <li>[Point d'amélioration 2]</li>
-                    <li>[Point d'amélioration 3]</li>
+                    <li>Consolider mon choix vers l'option <strong>Cybersécurité</strong>.</li>
+                    <li>Viser une certification <strong>CCNA</strong>.</li>
+                    <li>Monter un laboratoire de test personnel (HomeLab).</li>
                 </ul>
-            </div>
-
-            <div class="card">
-                <h3>🚀 Ajustements pour la suite</h3>
-                <p><strong>Pour le semestre suivant :</strong></p>
-                <ul>
-                    <li>[Objectif spécifique 1]</li>
-                    <li>[Méthode de travail à adapter]</li>
-                    <li>[Compétence à renforcer]</li>
-                </ul>
-                
-                <p><strong>Perspectives d'évolution :</strong></p>
-                <p>[Comment vous envisagez la suite de votre formation et votre projet professionnel]</p>
-            </div>
-
-            <div class="card">
-                <h3>💭 Synthèse</h3>
-                <p>Ce portfolio m'a permis de prendre conscience de ma progression dans l'acquisition des compétences du BUT RT. 
-                Cette démarche réflexive m'aide à mieux comprendre mes forces et les domaines nécessitant des améliorations, 
-                tout en me préparant à l'adaptabilité requise dans le monde professionnel des réseaux et télécommunications.</p>
             </div>
         </section>
+        
     </div>
 
     <footer>
-        <p>&copy; 2024 Portfolio BUT Réseaux et Télécommunications - [Votre Nom]</p>
-        <p>Dernière mise à jour : <span id="lastUpdate"></span></p>
+        <p>&copy; 2026 Portfolio Ylan B-K | Designed for Networks</p>
+        <p style="font-size: 0.8rem; opacity: 0.6;">Dernière mise à jour : <span id="lastUpdate"></span></p>
     </footer>
 
     <script>
-        // Navigation entre les sections
+        // --- NAVIGATION LOGIC ---
         function showSection(sectionId) {
-            // Masquer toutes les sections
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+            // Cacher toutes les sections
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
             
-            // Afficher la section demandée
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-                targetSection.classList.add('slide-in');
-                
-                // Supprimer la classe d'animation après l'animation
-                setTimeout(() => {
-                    targetSection.classList.remove('slide-in');
-                }, 500);
+            // Afficher la section cible
+            const target = document.getElementById(sectionId);
+            if(target) {
+                target.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-            
-            // Mettre à jour la navigation active
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => {
-                link.style.background = '';
-            });
-            
-            // Trouver et mettre en surbrillance le lien actif
-            const activeLink = Array.from(navLinks).find(link => 
+
+            // Mettre à jour le lien actif
+            document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active-link'));
+            const activeLink = Array.from(document.querySelectorAll('.nav-menu a')).find(link => 
                 link.getAttribute('onclick').includes(sectionId)
             );
-            if (activeLink) {
-                activeLink.style.background = '#3498db';
-            }
+            if(activeLink) activeLink.classList.add('active-link');
+
+            // Trigger animations
+            if(sectionId === 'competences') animateProgressBars();
         }
 
-        // Toggle pour les SAÉ
-        function toggleSAE(saeId) {
-            const content = document.getElementById(saeId);
+        // --- ACCORDION LOGIC ---
+        function toggleSAE(id) {
+            const content = document.getElementById(id);
             const header = content.previousElementSibling;
             const icon = header.querySelector('.toggle-icon');
-            
-            if (content.classList.contains('active')) {
-                content.classList.remove('active');
-                icon.classList.remove('rotated');
-            } else {
-                // Fermer toutes les autres SAÉ
-                const allSAEContents = document.querySelectorAll('.sae-content');
-                const allIcons = document.querySelectorAll('.toggle-icon');
-                
-                allSAEContents.forEach(c => c.classList.remove('active'));
-                allIcons.forEach(i => i.classList.remove('rotated'));
-                
-                // Ouvrir la SAÉ sélectionnée
-                content.classList.add('active');
-                icon.classList.add('rotated');
-            }
+
+            // Fermer les autres
+            document.querySelectorAll('.sae-content').forEach(c => {
+                if(c.id !== id) {
+                    c.classList.remove('active');
+                    c.previousElementSibling.querySelector('.toggle-icon').classList.remove('rotated');
+                }
+            });
+
+            // Toggle courant
+            content.classList.toggle('active');
+            icon.classList.toggle('rotated');
         }
 
-        // Animation des barres de progression
+        // --- CODE VIEWER ---
+        function toggleCode(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('active');
+        }
+
+        // --- PROGRESS BAR ANIMATION ---
         function animateProgressBars() {
-            const progressBars = document.querySelectorAll('.progress-fill');
-            progressBars.forEach(bar => {
-                const targetWidth = bar.getAttribute('data-width');
+            document.querySelectorAll('.progress-fill').forEach(bar => {
+                bar.style.width = '0';
                 setTimeout(() => {
-                    bar.style.width = targetWidth + '%';
-                }, 500);
+                    bar.style.width = bar.getAttribute('data-width') + '%';
+                }, 100);
             });
         }
 
-        // Initialisation au chargement de la page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mettre à jour la date
-            const now = new Date();
-            const options = { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-            document.getElementById('lastUpdate').textContent = 
-                now.toLocaleDateString('fr-FR', options);
+        // --- INIT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const date = new Date();
+            document.getElementById('lastUpdate').innerText = date.toLocaleDateString('fr-FR');
             
-            // Animer les barres de progression quand on arrive sur la section compétences
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && entry.target.id === 'competences') {
-                        animateProgressBars();
-                    }
-                });
-            });
-            
-            const competencesSection = document.getElementById('competences');
-            if (competencesSection) {
-                observer.observe(competencesSection);
-            }
-            
-            // Effet de survol sur les cartes
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.classList.add('bounce');
-                });
-                
-                card.addEventListener('animationend', function() {
-                    this.classList.remove('bounce');
-                });
-            });
-            
-            // Initialiser la navigation
-            showSection('accueil');
+            // Set active default
+            document.querySelector('.nav-menu a').classList.add('active-link');
         });
-
-        // Fonction pour sauvegarder les modifications (simulation)
-        function saveChanges() {
-            alert('Modifications sauvegardées ! (Simulation - dans un vrai projet, cela sauvegarderait les données)');
-        }
-
-        // Gestion du redimensionnement pour le responsive
-        window.addEventListener('resize', function() {
-            // Réajuster les éléments si nécessaire
-            const navMenu = document.querySelector('.nav-menu');
-            if (window.innerWidth <= 768) {
-                navMenu.style.flexDirection = 'column';
-            } else {
-                navMenu.style.flexDirection = 'row';
-            }
-        });
-
-        // Fonction d'export (simulation)
-        function exportPortfolio() {
-            alert('Export du portfolio en PDF... (Fonctionnalité à implémenter avec une bibliothèque comme jsPDF)');
-        }
     </script>
 </body>
 </html>
